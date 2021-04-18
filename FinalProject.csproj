@@ -4,4 +4,22 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Folder Include="Admin\Controllers\" />
+    <Folder Include="Admin\Models\" />
+    <Folder Include="Admin\Views\Brand\" />
+    <Folder Include="Admin\Views\Instrument\" />
+    <Folder Include="Admin\Views\Department\" />
+    <Folder Include="Models\DataLayer\SeedData\" />
+    <Folder Include="Models\DataLayer\Repositories\" />
+    <Folder Include="Models\DomainModels\" />
+    <Folder Include="Models\DTOs\" />
+    <Folder Include="Models\ExtensionMethods\" />
+    <Folder Include="Models\Grid\" />
+    <Folder Include="Models\ViewModels\" />
+    <Folder Include="Views\Instrument\" />
+    <Folder Include="Views\Brand\" />
+    <Folder Include="Views\Cart\" />
+  </ItemGroup>
+
 </Project>
