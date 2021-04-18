@@ -10,9 +10,7 @@
     <Folder Include="Admin\Views\Brand\" />
     <Folder Include="Admin\Views\Instrument\" />
     <Folder Include="Admin\Views\Department\" />
-    <Folder Include="Models\DataLayer\SeedData\" />
-    <Folder Include="Models\DataLayer\Repositories\" />
-    <Folder Include="Models\DomainModels\" />
+    <Folder Include="Migrations\" />
     <Folder Include="Models\DTOs\" />
     <Folder Include="Models\Grid\" />
     <Folder Include="Models\ViewModels\" />

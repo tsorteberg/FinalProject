@@ -21,6 +21,8 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using FinalProject.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace FinalProject
 {
@@ -39,6 +41,8 @@ namespace FinalProject
             services.AddMemoryCache();
             services.AddSession();
             services.AddControllersWithViews().AddNewtonsoftJson();
+
+            services.AddDbContext<FinalContext>(options => options.UseSqlServer(Configuration.GetConnectionString("FinalContext")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

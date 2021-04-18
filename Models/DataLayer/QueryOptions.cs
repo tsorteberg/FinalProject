@@ -16,7 +16,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq.Expressions;
 
-namespace Bookstore.Models
+namespace FinalProject.Models
 {
     public class QueryOptions<T>
     {
