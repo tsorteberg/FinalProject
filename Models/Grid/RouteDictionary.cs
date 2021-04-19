@@ -87,7 +87,7 @@ namespace FinalProject.Models
             set => this[nameof(InstrumentsGridDTO.Price)] = value;
         }
 
-        public string AuthorFilter
+        public string BrandFilter
         {
             get
             {
@@ -108,7 +108,7 @@ namespace FinalProject.Models
         {
             DepartmentFilter = FilterPrefix.Department + InstrumentsGridDTO.DefaultFilter;
             PriceFilter = FilterPrefix.Price + InstrumentsGridDTO.DefaultFilter;
-            AuthorFilter = FilterPrefix.Brand + InstrumentsGridDTO.DefaultFilter;
+            BrandFilter = FilterPrefix.Brand + InstrumentsGridDTO.DefaultFilter;
         }
 
         private string Get(string key) => Keys.Contains(key) ? this[key] : null;
