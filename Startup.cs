@@ -66,6 +66,16 @@ namespace FinalProject
 
             app.UseEndpoints(endpoints =>
             {
+                // route for paging, sorting, and filtering
+                endpoints.MapControllerRoute(
+                    name: "",
+                    pattern: "{controller}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}/filter/{brand}/{department}/{price}");
+
+                // route for paging and sorting only
+                endpoints.MapControllerRoute(
+                    name: "",
+                    pattern: "{controller}/{action}/page/{pagenumber}/size/{pagesize}/sort/{sortfield}/{sortdirection}");
+
                 endpoints.MapControllerRoute(
                     name: "default",
                     pattern: "{controller=Home}/{action=Index}/{id?}");

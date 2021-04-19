@@ -15,7 +15,7 @@
 using Microsoft.AspNetCore.Http;
 using Newtonsoft.Json;
 
-namespace Bookstore.Models
+namespace FinalProject.Models
 {
     // these methods make it easier to get and set objects in session
 

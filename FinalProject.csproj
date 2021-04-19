@@ -11,10 +11,7 @@
     <Folder Include="Admin\Views\Instrument\" />
     <Folder Include="Admin\Views\Department\" />
     <Folder Include="Migrations\" />
-    <Folder Include="Models\Grid\" />
-    <Folder Include="Models\ViewModels\" />
     <Folder Include="Views\Instrument\" />
-    <Folder Include="Views\Brand\" />
     <Folder Include="Views\Cart\" />
   </ItemGroup>
 

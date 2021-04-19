@@ -1,5 +1,5 @@
 ﻿/***************************************************************
-* Name        : GridDTO.cs
+* Name        : BrandListViewModel.cs
 * Author      : Tom Sorteberg
 * Created     : 04/18/2021
 * Course      : CIS 174
@@ -19,15 +19,10 @@ using System.Threading.Tasks;
 
 namespace FinalProject.Models
 {
-    // General purpose class for model binding the paging and sorting route segments
-    // defined in the Startup.cs file - can be used for any web application. Doesn't
-    // include any filter properties, as those are usually application-specific. 
-
-    public class GridDTO
+    public class BrandListViewModel
     {
-        public int PageNumber { get; set; } = 1;
-        public int PageSize { get; set; } = 4;
-        public string SortField { get; set; }
-        public string SortDirection { get; set; } = "asc";
+        public IEnumerable<Brand> Brands { get; set; }
+        public RouteDictionary CurrentRoute { get; set; }
+        public int TotalPages { get; set; }
     }
 }

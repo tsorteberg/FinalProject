@@ -1,7 +1,7 @@
 ﻿/***************************************************************
-* Name        : GridDTO.cs
+* Name        : Nav.cs
 * Author      : Tom Sorteberg
-* Created     : 04/18/2021
+* Created     : 04/19/2021
 * Course      : CIS 174
 * Version     : 1.0
 * OS          : Windows 10 Pro, Visual Studio Community 2019
@@ -19,15 +19,15 @@ using System.Threading.Tasks;
 
 namespace FinalProject.Models
 {
-    // General purpose class for model binding the paging and sorting route segments
-    // defined in the Startup.cs file - can be used for any web application. Doesn't
-    // include any filter properties, as those are usually application-specific. 
+    // this class isn't exactly a view model, so it doesn't have the ViewModel suffix.
+    // It's used in the Layout and AdminLayout views to mark a nav link as active.
+    // It's in this folder because, like a traditional view model, it's used in a view.
 
-    public class GridDTO
+    public static class Nav
     {
-        public int PageNumber { get; set; } = 1;
-        public int PageSize { get; set; } = 4;
-        public string SortField { get; set; }
-        public string SortDirection { get; set; } = "asc";
+        public static string Active(string value, string current) =>
+            (value == current) ? "active" : "";
+        public static string Active(int value, int current) =>
+            (value == current) ? "active" : "";
     }
 }
