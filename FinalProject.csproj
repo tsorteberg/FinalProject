@@ -11,7 +11,6 @@
     <Folder Include="Admin\Views\Instrument\" />
     <Folder Include="Admin\Views\Department\" />
     <Folder Include="Migrations\" />
-    <Folder Include="Models\DTOs\" />
     <Folder Include="Models\Grid\" />
     <Folder Include="Models\ViewModels\" />
     <Folder Include="Views\Instrument\" />
