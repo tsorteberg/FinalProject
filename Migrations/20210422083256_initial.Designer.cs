@@ -9,7 +9,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace FinalProject.Migrations
 {
     [DbContext(typeof(FinalContext))]
-    [Migration("20210418211859_initial")]
+    [Migration("20210422083256_initial")]
     partial class initial
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,9 @@ namespace FinalProject.Migrations
                         .HasColumnType("nvarchar(200)")
                         .HasMaxLength(200);
 
+                    b.Property<string>("LogoImage")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ProductLine")
                         .IsRequired()
                         .HasColumnType("nvarchar(200)")
@@ -46,48 +49,56 @@ namespace FinalProject.Migrations
                         {
                             BrandId = 1,
                             BrandName = "Fender Stratocaster",
+                            LogoImage = "Fender.jpg",
                             ProductLine = "Guitars"
                         },
                         new
                         {
                             BrandId = 2,
                             BrandName = "Yamaha",
+                            LogoImage = "Yamaha.jpg",
                             ProductLine = "Orchestra"
                         },
                         new
                         {
                             BrandId = 3,
                             BrandName = "Ludwig",
+                            LogoImage = "Ludwig.jpg",
                             ProductLine = "Drum Sets"
                         },
                         new
                         {
                             BrandId = 4,
                             BrandName = "Latin Percussion",
+                            LogoImage = "LatinPercussion.jpg",
                             ProductLine = "Hand Percussion"
                         },
                         new
                         {
                             BrandId = 5,
                             BrandName = "Korg",
+                            LogoImage = "Korg.jpg",
                             ProductLine = "Synthesizers"
                         },
                         new
                         {
                             BrandId = 6,
                             BrandName = "Jean Paul USA",
+                            LogoImage = "JeanPaul.jpg",
                             ProductLine = "Band"
                         },
                         new
                         {
                             BrandId = 7,
                             BrandName = "Gemeinhardt",
+                            LogoImage = "Gemeinhardt.jpg",
                             ProductLine = "Orchestra"
                         },
                         new
                         {
                             BrandId = 8,
                             BrandName = "Kaizer",
+                            LogoImage = "Kaizer.jpg",
                             ProductLine = "Band"
                         });
                 });

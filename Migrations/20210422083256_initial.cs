@@ -13,7 +13,8 @@ namespace FinalProject.Migrations
                     BrandId = table.Column<int>(nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
                     BrandName = table.Column<string>(maxLength: 200, nullable: false),
-                    ProductLine = table.Column<string>(maxLength: 200, nullable: false)
+                    ProductLine = table.Column<string>(maxLength: 200, nullable: false),
+                    LogoImage = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
                 {
@@ -80,17 +81,17 @@ namespace FinalProject.Migrations
 
             migrationBuilder.InsertData(
                 table: "Brands",
-                columns: new[] { "BrandId", "BrandName", "ProductLine" },
+                columns: new[] { "BrandId", "BrandName", "LogoImage", "ProductLine" },
                 values: new object[,]
                 {
-                    { 1, "Fender Stratocaster", "Guitars" },
-                    { 2, "Yamaha", "Orchestra" },
-                    { 3, "Ludwig", "Drum Sets" },
-                    { 4, "Latin Percussion", "Hand Percussion" },
-                    { 5, "Korg", "Synthesizers" },
-                    { 6, "Jean Paul USA", "Band" },
-                    { 7, "Gemeinhardt", "Orchestra" },
-                    { 8, "Kaizer", "Band" }
+                    { 1, "Fender Stratocaster", "Fender.jpg", "Guitars" },
+                    { 2, "Yamaha", "Yamaha.jpg", "Orchestra" },
+                    { 3, "Ludwig", "Ludwig.jpg", "Drum Sets" },
+                    { 4, "Latin Percussion", "LatinPercussion.jpg", "Hand Percussion" },
+                    { 5, "Korg", "Korg.jpg", "Synthesizers" },
+                    { 6, "Jean Paul USA", "JeanPaul.jpg", "Band" },
+                    { 7, "Gemeinhardt", "Gemeinhardt.jpg", "Orchestra" },
+                    { 8, "Kaizer", "Kaizer.jpg", "Band" }
                 });
 
             migrationBuilder.InsertData(

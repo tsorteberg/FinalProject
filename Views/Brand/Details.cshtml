@@ -1,0 +1,49 @@
+﻿<!--
+/***************************************************************
+* Name        : Brand/Details.cshtml
+* Author      : Tom Sorteberg
+* Created     : 04/22/2021
+* Course      : CIS 174
+* Version     : 1.0
+* OS          : Windows 10 Pro, Visual Studio Community 2019
+* Copyright   : This is my own original work based on
+*               specifications issued by our instructor
+* Description : Final Project
+* I have not used unauthorized source code, either modified or
+* unmodified. I have not given other fellow student(s) access
+* to my program.
+***************************************************************/
+-->
+@model Brand
+
+@{
+    ViewData["Title"] = " | Brand";
+}
+
+<h1>Brand</h1>
+
+<table class="table table-bordered table-sm">
+    <thead>
+        <tr class="thead-dark">
+            <th></th>
+            <th>@Model.BrandName</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var ib in Model.InstrumentBrands)
+        {
+            <tr>
+                <td style="text-align: center;"><img style="height: 50px; width: 50px;" src="~/images/@ib.Instrument.LogoImage" alt="" /></td>
+                <td>
+                    <p>
+                        <a asp-action="Details" asp-controller="Instrument"
+                           asp-route-id="@ib.InstrumentId"
+                           asp-route-slug="@ib.Instrument.Name.Slug()">
+                            @ib.Instrument.Name
+                        </a>
+                    </p>
+                </td>
+            </tr>
+         }
+        </tbody>
+</table>

@@ -11,7 +11,7 @@
     <Folder Include="Admin\Views\Instrument\" />
     <Folder Include="Admin\Views\Department\" />
     <Folder Include="Migrations\" />
-    <Folder Include="Views\Cart\" />
+    <Folder Include="wwwroot\images\" />
   </ItemGroup>
 
   <ItemGroup>

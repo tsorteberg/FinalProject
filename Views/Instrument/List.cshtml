@@ -58,16 +58,18 @@
 
 @* add to cart form *@
 <form asp-action="Add" asp-controller="Cart" method="post">
-    <table class="table table-bordered table-striped table-sm">
+    <table class="table table-bordered table-sm">
         @* for each sortable table column, update the route dictionary with the field to sort by, and then
             use that route dictionary and the current route to create route segments for sorting link *@
         <thead class="thead-dark">
             <tr>
+                <th></th>
                 <th>
                     @{ routes.SetSortAndDirection(nameof(Instrument.Name), current); }
                     <a asp-action="List" asp-all-route-data="@routes"
                        class="text-white">Product</a>
                 </th>
+                <th></th>
                 <th>Brands(s)</th>
                 <th>
                     @{ routes.SetSortAndDirection(nameof(Department), current); }
@@ -85,34 +87,39 @@
         <tbody>
             @foreach (Instrument instrument in Model.Instruments)
             {
-                <tr>
+            <tr>
+                <td style="text-align: center;"><img style="height: 50px; width: 50px;" src="~/images/@instrument.LogoImage" alt="" /></td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@instrument.InstrumentId"
+                       asp-route-slug="@instrument.Name.Slug()">
+                        @instrument.Name
+                    </a>
+                </td>
+
+
+                @foreach (var ib in instrument.InstrumentBrands)
+                {
+                    <td style="text-align: center;"><img style="height: 50px; width: 50px;" src="~/images/@ib.Brand.LogoImage" alt="" /></td>
                     <td>
-                        <a asp-action="Details" asp-route-id="@instrument.InstrumentId"
-                           asp-route-slug="@instrument.Name.Slug()">
-                            @instrument.Name
-                        </a>
+                        <p>
+                            <a asp-action="Details" asp-controller="Brand"
+                               asp-route-id="@ib.BrandId"
+                               asp-route-slug="@ib.Brand.BrandName.Slug()">
+                                @ib.Brand.BrandName
+                            </a>
+                        </p>
                     </td>
-                    <td>
-                        @foreach (var ib in instrument.InstrumentBrands)
-                        {
-                            <p>
-                                <a asp-action="Details" asp-controller="Brand"
-                                   asp-route-id="@ib.BrandId"
-                                   asp-route-slug="@ib.Brand.BrandName.Slug()">
-                                    @ib.Brand.BrandName
-                                </a>
-                            </p>
-                        }
-                    </td>
-                    <td>@instrument.Department?.Name</td>
-                    <td>@instrument.Price.ToString("c")</td>
-                    <td>
-                        <button type="submit" name="id" value="@instrument.InstrumentId"
-                                class="btn btn-primary">
-                            Add To Cart
-                        </button>
-                    </td>
-                </tr>
+                }
+
+                <td>@instrument.Department?.Name</td>
+                <td>@instrument.Price.ToString("c")</td>
+                <td style="text-align: center;">
+                    <button type="submit" name="id" value="@instrument.InstrumentId"
+                            class="btn btn-primary">
+                        Add To Cart
+                    </button>
+                </td>
+            </tr>
             }
         </tbody>
     </table>

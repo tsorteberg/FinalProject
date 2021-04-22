@@ -1,0 +1,60 @@
+﻿<!--
+/***************************************************************
+* Name        : Instrument/Details.cshtml
+* Author      : Tom Sorteberg
+* Created     : 04/22/2021
+* Course      : CIS 174
+* Version     : 1.0
+* OS          : Windows 10 Pro, Visual Studio Community 2019
+* Copyright   : This is my own original work based on
+*               specifications issued by our instructor
+* Description : Final Project
+* I have not used unauthorized source code, either modified or
+* unmodified. I have not given other fellow student(s) access
+* to my program.
+***************************************************************/
+-->
+@model Instrument
+
+@{
+    ViewData["Title"] = " | Instrument Details";
+}
+
+<h1>Instrument Details</h1>
+
+<table class="table table-bordered table-sm">
+    <thead>
+        <tr class="thead-dark">
+            <th>Product:</th>
+            <th>@Model.Name</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <tr>
+            <td>@(Model.InstrumentBrands.Count > 1 ? "Brands" : "Brand")</td>
+            <td>
+                @foreach (InstrumentBrand ib in Model.InstrumentBrands)
+                {
+                    <p>
+                        <a asp-action="Details" asp-controller="Brand"
+                           asp-route-id="@ib.InstrumentId"
+                           asp-route-slug="@ib.Brand.BrandName.Slug()">
+                            @ib.Brand.BrandName
+                        </a>
+                    </p>
+                }
+            </td>
+        </tr>
+        <tr><td>Price:</td><td>@Model.Price.ToString("c")</td></tr>
+        <tr><td>Genre:</td><td>@Model.Department.Name</td></tr>
+        <tr><td>Image:</td><td><img src="~/images/@Model.LogoImage" alt="" /></td></tr>
+    </tbody>
+</table>
+
+<form asp-action="Add" asp-controller="Cart" method="post">
+    <button type="submit" name="id" value="@Model.InstrumentId"
+            class="btn btn-primary">
+        Add To Cart
+    </button>
+</form>

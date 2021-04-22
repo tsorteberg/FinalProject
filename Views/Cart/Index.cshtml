@@ -1,0 +1,99 @@
+﻿<!--
+/***************************************************************
+* Name        : Cart/Index.cshtml
+* Author      : Tom Sorteberg
+* Created     : 04/22/2021
+* Course      : CIS 174
+* Version     : 1.0
+* OS          : Windows 10 Pro, Visual Studio Community 2019
+* Copyright   : This is my own original work based on
+*               specifications issued by our instructor
+* Description : Final Project
+* I have not used unauthorized source code, either modified or
+* unmodified. I have not given other fellow student(s) access
+* to my program.
+***************************************************************/
+-->
+@model CartViewModel
+
+@{
+    ViewData["Title"] = " | Cart";
+}
+
+<h1>Your Cart</h1>
+
+<form asp-action="Clear" method="post">
+    <ul class="list-group mb-4">
+        <li class="list-group-item">
+            <div class="row">
+                <div class="col">
+                    Subtotal: @Model.Subtotal.ToString("c")
+                </div>
+                <div class="col">
+                    <div class="float-right">
+                        <a asp-action="Checkout" class="btn btn-primary">Checkout</a>
+                        <button type="submit" class="btn btn-primary">Clear Cart</button>
+                        <a asp-action="List" asp-controller="Instrument"
+                           asp-all-route-data="@Model.InstrumentGridRoute">Back to Shopping</a>
+                    </div>
+
+                </div>
+            </div>
+        </li>
+    </ul>
+</form>
+<form asp-action="Remove" method="post">
+    <table class="table">
+        <thead class="thead-dark">
+            <tr>
+                <th>Product</th>
+                <th>Brand(s)</th>
+                <th>Price</th>
+                <th>Quantity</th>
+                <th>Subtotal</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (CartItem item in Model.List)
+            {
+                <tr>
+                    <td>
+                        <a asp-action="Details" asp-controller="Instrument"
+                           asp-route-id="@item.Instrument.InstrumentId"
+                           asp-route-slug="@item.Instrument.Name.Slug()">
+                            @item.Instrument.Name
+                        </a>
+                    </td>
+                    <td>
+                        @foreach (var keyValuePair in item.Instrument.Brands)
+                        {
+                            <p>
+                                <a asp-action="Details" asp-controller="Brand"
+                                   asp-route-id="@keyValuePair.Key"
+                                   asp-route-slug="@keyValuePair.Value.Slug()">
+                                    @keyValuePair.Value
+                                </a>
+                            </p>
+                        }
+                    </td>
+                    <td>@item.Instrument.Price.ToString("c")</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.Subtotal.ToString("c")</td>
+                    <td>
+                        <div class="float-right">
+                            <a asp-action="Edit" asp-controller="Cart"
+                               asp-route-id="@item.Instrument.InstrumentId"
+                               asp-route-slug="@item.Instrument.Name.Slug()"
+                               class="btn btn-primary">Edit</a>
+                            <button type="submit" name="id" value="@item.Instrument.InstrumentId"
+                                    class="btn btn-primary">
+                                Remove
+                            </button>
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</form>

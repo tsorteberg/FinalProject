@@ -39,5 +39,8 @@ namespace FinalProject.Models
 
         // navigation property
         public ICollection<InstrumentBrand> InstrumentBrands { get; set; }
+
+        // image properties
+        public string LogoImage { get; set; }
     }
 }

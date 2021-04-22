@@ -25,11 +25,12 @@
 
 <h1>Brand Catalog</h1>
 
-<table class="table table-bordered table-striped table-sm">
+<table class="table table-bordered table-sm">
     @* for the name columns, update the route dictionary with the field to sort by, and then use
         that route dictionary and the current route to create route segments for sorting link *@
     <thead class="thead-dark">
         <tr>
+            <th></th>
             <th>
                 @{ routes.SetSortAndDirection(nameof(Brand.BrandName), current); }
                 <a asp-action="List" asp-all-route-data="@routes"
@@ -46,32 +47,33 @@
     <tbody>
         @foreach (Brand brand in Model.Brands)
         {
-            <tr>
-                <td>
-                    <a asp-action="Details" asp-route-id="@brand.BrandId"
-                       asp-route-slug="@brand.BrandName.Slug()">
-                        @brand.BrandName
-                    </a>
-                </td>
-                <td>
-                    <a asp-action="Details" asp-route-id="@brand.BrandId"
-                       asp-route-slug="@brand.BrandName.Slug()">
-                        @brand.ProductLine
-                    </a>
-                </td>
-                <td>
-                    @foreach (var ib in brand.InstrumentBrands)
-                    {
-                        <p>
-                            <a asp-action="Details" asp-controller="Instrument"
-                               asp-route-id="@ib.InstrumentId"
-                               asp-route-slug="@ib.Instrument.Name.Slug()">
-                                @ib.Instrument.Name
-                            </a>
-                        </p>
-                    }
-                </td>
-            </tr>
+        <tr>
+            <td style="text-align: center;"><img style="height: 50px; width: 50px;" src="~/images/@brand.LogoImage" alt="" /></td>
+            <td>
+                <a asp-action="Details" asp-route-id="@brand.BrandId"
+                   asp-route-slug="@brand.BrandName.Slug()">
+                    @brand.BrandName
+                </a>
+            </td>
+            <td>
+                <a asp-action="Details" asp-route-id="@brand.BrandId"
+                   asp-route-slug="@brand.BrandName.Slug()">
+                    @brand.ProductLine
+                </a>
+            </td>
+            <td>
+                @foreach (var ib in brand.InstrumentBrands)
+                {
+                    <p>
+                        <a asp-action="Details" asp-controller="Instrument"
+                           asp-route-id="@ib.InstrumentId"
+                           asp-route-slug="@ib.Instrument.Name.Slug()">
+                            @ib.Instrument.Name
+                        </a>
+                    </p>
+                }
+            </td>
+        </tr>
         }
     </tbody>
 </table>

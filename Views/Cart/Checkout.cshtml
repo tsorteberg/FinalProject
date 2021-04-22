@@ -1,0 +1,34 @@
+﻿<!--
+/***************************************************************
+* Name        : Cart/Checkout.cshtml
+* Author      : Tom Sorteberg
+* Created     : 04/22/2021
+* Course      : CIS 174
+* Version     : 1.0
+* OS          : Windows 10 Pro, Visual Studio Community 2019
+* Copyright   : This is my own original work based on
+*               specifications issued by our instructor
+* Description : Final Project
+* I have not used unauthorized source code, either modified or
+* unmodified. I have not given other fellow student(s) access
+* to my program.
+***************************************************************/
+-->
+@{
+    ViewData["Title"] = "Checkout";
+}
+
+<h1>Checkout</h1>
+<ul class="list-group">
+    <li class="list-group-item bg-danger text-white">
+        <h4>Don't roll your own checkout! It isn't secure!</h4>
+    </li>
+    <li class="list-group-item bg-warning">
+        Use a third party payment service, like
+        <a href="https://stripe.com/" target="_blank">Stripe</a> or
+        <a href="https://transferwise.com/us" target="_blank">TransferWise</a>.
+
+        Most are pretty easy to incorporate in to your own web application, and then
+        you aren't handling money or trying to store credit card numbers.
+    </li>
+</ul>
