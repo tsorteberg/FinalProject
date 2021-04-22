@@ -1,8 +1,33 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
-}
+﻿<!--
+/***************************************************************
+* Name        : Home/Index.cshtml
+* Author      : Tom Sorteberg
+* Created     : 04/21/2021
+* Course      : CIS 174
+* Version     : 1.0
+* OS          : Windows 10 Pro, Visual Studio Community 2019
+* Copyright   : This is my own original work based on
+*               specifications issued by our instructor
+* Description : Final Project
+* I have not used unauthorized source code, either modified or
+* unmodified. I have not given other fellow student(s) access
+* to my program.
+***************************************************************/
+-->
+@model Instrument
 
 <div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h1>Our Staff Pick!</h1>
+    <ul class="list-group">
+        <li class="list-group-item list-group-item-heading list-group-item-success">
+            <h5>
+                <a asp-controller="Book"
+                   asp-action="Details"
+                   asp-route-id="@Model.InstrumentId"
+                   asp-route-slug="@Model.Name.Slug()">
+                    @Model.Name
+                </a>
+            </h5>
+        </li>
+    </ul>
 </div>

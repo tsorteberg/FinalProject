@@ -40,7 +40,7 @@
                 <a asp-action="List" asp-all-route-data="@routes"
                    class="text-white">Product Line</a>
             </th>
-            <th>Book(s)</th>
+            <th>Instruments(s)</th>
         </tr>
     </thead>
     <tbody>
@@ -50,7 +50,7 @@
                 <td>
                     <a asp-action="Details" asp-route-id="@brand.BrandId"
                        asp-route-slug="@brand.BrandName.Slug()">
-                        @brand.ProductLine
+                        @brand.BrandName
                     </a>
                 </td>
                 <td>

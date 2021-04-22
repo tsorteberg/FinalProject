@@ -34,12 +34,12 @@ namespace FinalProject.Models
             }
             if (builder.IsFilterByPrice)
             {
-                if (builder.CurrentRoute.PriceFilter == "under7")
-                    Where = p => p.Price < 7;
-                else if (builder.CurrentRoute.PriceFilter == "7to14")
-                    Where = p => p.Price >= 7 && p.Price <= 14;
+                if (builder.CurrentRoute.PriceFilter == "under100")
+                    Where = p => p.Price < 100;
+                else if (builder.CurrentRoute.PriceFilter == "100to500")
+                    Where = p => p.Price >= 100 && p.Price <= 500;
                 else
-                    Where = p => p.Price > 14;
+                    Where = p => p.Price > 500;
             }
             if (builder.IsFilterByBrand)
             {
