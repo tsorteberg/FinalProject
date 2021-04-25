@@ -1,0 +1,78 @@
+﻿<!--
+/***************************************************************
+* Name        : Admin/Views/Department/Department.cshtml
+* Author      : Tom Sorteberg
+* Created     : 04/25/2021
+* Course      : CIS 174
+* Version     : 1.0
+* OS          : Windows 10 Pro, Visual Studio Community 2019
+* Copyright   : This is my own original work based on
+*               specifications issued by our instructor
+* Description : Final Project
+* I have not used unauthorized source code, either modified or
+* unmodified. I have not given other fellow student(s) access
+* to my program.
+***************************************************************/
+-->
+@model Department
+
+@{
+    // this view is used for add, edit, and delete.
+    // Which one is determined by the action method name.
+    var action = ViewContext.RouteData.Values["action"].ToString().Capitalize();
+
+    ViewData["Title"] = $" | {action} Department";
+}
+
+<h1>@action Department</h1>
+
+<form asp-action="@action" asp-area="Admin" method="post">
+
+    <div class="form-group row">
+        <div class="col-sm-2"><label>DepartmentId:</label></div>
+
+        @* if adding, provide a text box. Otherwise, display genreId in a label. *@
+        @if (Operation.IsAdd(action))
+        {
+            <div class="col-sm-4">
+                <input type="text" asp-for="DepartmentId" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="DepartmentId" class="text-danger"></span>
+            </div>
+        }
+        else
+        {
+            <div class="col-sm-4"><label>@Model.DepartmentId</label></div>
+            <input type="hidden" asp-for="DepartmentId" />
+        }
+    </div>
+
+    <div class="form-group row">
+        <div class="col-sm-2"><label>Name:</label></div>
+
+        @* if deleting, put Name value in label and hidden field for delete message.
+            Otherwise, provide text box. *@
+        @if (Operation.IsDelete(action))
+        {
+            <div class="col-sm-4"><label>@Model.Name</label></div>
+            <input type="hidden" asp-for="Name" />
+        }
+        else
+        {
+            <div class="col-sm-4">
+                <input type="text" asp-for="Name" class="form-control" />
+            </div>
+            <div class="col-sm-6">
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+        }
+    </div>
+
+    <div class="row">
+        <div class="col-sm-4 offset-sm-2">
+            <button type="submit" class="btn btn-primary">@action</button>
+            <a asp-action="Index" class="btn btn-primary">Cancel</a>
+        </div>
+    </div>
+</form>

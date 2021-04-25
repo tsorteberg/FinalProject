@@ -1,0 +1,53 @@
+﻿<!--
+/***************************************************************
+* Name        : Admin/Views/Shared/_AdminLayout.cshtml
+* Author      : Tom Sorteberg
+* Created     : 04/18/2021
+* Course      : CIS 174
+* Version     : 1.0
+* OS          : Windows 10 Pro, Visual Studio Community 2019
+* Copyright   : This is my own original work based on
+*               specifications issued by our instructor
+* Description : Final Project
+* I have not used unauthorized source code, either modified or
+* unmodified. I have not given other fellow student(s) access
+* to my program.
+***************************************************************/
+-->
+@{
+    // nested layout view
+    Layout = "_Layout";
+
+    // use current controller to determine if tab is active
+    var current = ViewContext.RouteData.Values["controller"]?.ToString();
+}
+
+@* since many admin views deal with user entry and data validation,
+    jQuery validation libraries are included here rather than in individual views. *@
+@section scripts {
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
+}
+
+<ul class="nav nav-tabs mt-2 mb-3">
+    <li class="nav-item">
+        <a asp-action="Index" asp-controller="Instrument"
+           class="nav-link @Nav.Active("Instrument", current)">
+            Manage Instruments
+        </a>
+    </li>
+    <li class="nav-item">
+        <a asp-action="Index" asp-controller="Brand"
+           class="nav-link @Nav.Active("Brand", current)">
+            Manage Brands
+        </a>
+    </li>
+    <li class="nav-item">
+        <a asp-action="Index" asp-controller="Department"
+           class="nav-link @Nav.Active("Department", current)">
+            Manage Genres
+        </a>
+    </li>
+</ul>
+
+@RenderBody()

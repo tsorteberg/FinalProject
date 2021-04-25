@@ -66,6 +66,12 @@ namespace FinalProject
 
             app.UseEndpoints(endpoints =>
             {
+                // route for Admin area
+                endpoints.MapAreaControllerRoute(
+                    name: "admin",
+                    areaName: "Admin",
+                    pattern: "Admin/{controller=Instrument}/{action=Index}/{id?}");
+
                 // route for paging, sorting, and filtering
                 endpoints.MapControllerRoute(
                     name: "",

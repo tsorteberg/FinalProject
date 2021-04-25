@@ -5,11 +5,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Admin\Controllers\" />
-    <Folder Include="Admin\Models\" />
-    <Folder Include="Admin\Views\Brand\" />
-    <Folder Include="Admin\Views\Instrument\" />
-    <Folder Include="Admin\Views\Department\" />
     <Folder Include="Migrations\" />
     <Folder Include="wwwroot\images\" />
   </ItemGroup>

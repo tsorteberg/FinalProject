@@ -1,0 +1,51 @@
+﻿<!--
+/***************************************************************
+* Name        : Admin/Views/Department/Index.cshtml
+* Author      : Tom Sorteberg
+* Created     : 04/25/2021
+* Course      : CIS 174
+* Version     : 1.0
+* OS          : Windows 10 Pro, Visual Studio Community 2019
+* Copyright   : This is my own original work based on
+*               specifications issued by our instructor
+* Description : Final Project
+* I have not used unauthorized source code, either modified or
+* unmodified. I have not given other fellow student(s) access
+* to my program.
+***************************************************************/
+-->
+@model IEnumerable<Department>
+
+@{
+    ViewData["Title"] = " | Manage Genres";
+}
+
+<h1 class="mb-2">Manage Departments</h1>
+
+<h5 class="mt-2"><a asp-action="Add" asp-area="Admin">Add a Department</a></h5>
+
+<table class="table table-bordered table-striped table-sm">
+    <thead>
+        <tr><th>DepartmentId</th><th>Name</th><th></th></tr>
+    </thead>
+    <tbody>
+        @foreach (Department department in Model)
+        {
+            <tr>
+                <td>@department.DepartmentId</td>
+                <td>@department.Name</td>
+                <td>
+                    <a asp-action="ViewBooks" asp-area="Admin" asp-route-id="@department.DepartmentId"
+                       class="btn btn-primary">View Instruments</a>
+                    <a asp-action="Edit" asp-area="Admin" asp-route-id="@department.DepartmentId"
+                       class="btn btn-primary">Edit</a>
+                    <a asp-action="Delete" asp-area="Admin" asp-route-id="@department.DepartmentId"
+                       class="btn btn-primary">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+
+

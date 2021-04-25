@@ -39,6 +39,7 @@ namespace FinalProject.Models
         public Department Department { get; set; }
         public ICollection<InstrumentBrand> InstrumentBrands { get; set; }
 
+        [Required]
         // image properties
         public string LogoImage { get; set; }
     }
